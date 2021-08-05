@@ -12,4 +12,4 @@ before_script:
 
 script:
   - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-  - docker buildx build --platform linux/amd64,linux/arm64 -t abhishek138/meso_image:arm_latest -f ./mesos --push .
+  - docker buildx build --platform linux/amd64,linux/arm64 -t abhishek138/meso_image:arm_latest -f ./mesos/mesos --push .
