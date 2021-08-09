@@ -1,12 +1,27 @@
-FROM ubuntu:trusty
+FROM ubuntu:bionic
 MAINTAINER Mesosphere <support@mesosphere.io>
 
 RUN apt-get update && \
-  apt-get -y install apt-transport-https ca-certificates && \
-  apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
-  echo deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list && \
+  apt-get install apt-transport-https ca-certificates curl gnupg lsb-release && \
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
+  echo \
+  "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && \
   apt-get update && \
-  apt-get -y install curl docker-engine
+  apt-get install docker-ce docker-ce-cli containerd.io
+
+
+
+
+
+
+
+#RUN apt-get update && \
+  #apt-get -y install apt-transport-https ca-certificates && \
+  #apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+  #echo deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list && \
+  #apt-get update && \
+  #apt-get -y install curl docker-engine
 
 RUN echo "deb http://repos.mesosphere.io/ubuntu/ trusty{UBUNTU_TESTING} main" > /etc/apt/sources.list.d/mesosphere.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
