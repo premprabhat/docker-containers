@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 MAINTAINER Mesosphere <support@mesosphere.io>
 
-RUN apt-get update && \
+RUN apt-get update
 RUN apt-get -y install curl
  # apt-get  -y install apt-transport-https ca-certificates curl gnupg lsb-release && \
   #curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
