@@ -15,6 +15,6 @@ RUN apt-get update && \
 RUN echo "deb http://repos.mesosphere.io/ubuntu/ trusty{UBUNTU_TESTING} main" > /etc/apt/sources.list.d/mesosphere.list && \
   apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
   apt-get -y update && \
-  echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+  echo "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" && \
   #apt-get -y install mesos={VERSION} && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
